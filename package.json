@@ -1,0 +1,22 @@
+{
+  "name": "automationapi",
+  "version": "1.0.0",
+  "description": "tugas4",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npx mocha"
+  },
+  "keywords": [
+    "api",
+    "automation"
+  ],
+  "author": "wite kurnia",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.1.0"
+  }
+}
