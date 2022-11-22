@@ -1,27 +1,80 @@
-const request = require("supertest")("http://restapi.adequateshop.com");
+const request = require("supertest")("https://restful-booker.herokuapp.com");
 const expect = require("chai").expect;
 
-const AUTH = 'Bearer e1c9f144-3e6e-4d9e-8b64-6ae4259d6485'
+// describe("POST /auth", function () {
 
-describe("PUT /api/users/148307", function () {
+//     it("Update User ", async function () {
+
+//         const response = await request
+//             .post("/auth")
+//             .send({
+//                 "username": "admin",
+//                 "password": "password123",
+//             });
+
+//         expect(response.statusCode).to.eql(200);
+//         expect(response.body.token).to.eql("abc123");
+
+//         let token = response.body.token
+
+//     })
+// })
+
+// describe("POST /booking", function () {
+
+//     it("Update User ", async function () {
+
+//         const response = await request
+//             .post("/booking")
+//             .set({
+//                 "Content-Type": 'application/json',
+//                 'Accept': 'application/json',
+//             })
+//             .send({
+//                 "firstname": "Jim",
+//                 "lastname": "Brown",
+//                 "totalprice": 111,
+//                 "depositpaid": true,
+//                 "bookingdates": {
+//                     "checkin": "2018-01-01",
+//                     "checkout": "2019-01-01"
+//                 },
+//                 "additionalneeds": "Breakfast"
+//             });
+
+//         expect(response.statusCode).to.eql(200);
+//         expect(response.body.bookingid).to.eql(57806);
+
+//         // let token = response.body.token
+
+//     })
+// })
+
+describe("PUT /booking/57806", function () {
 
     it("Update User ", async function () {
 
         const response = await request
-            .put("/api/users/148307")
+            .put("/booking/57806")
             .set({
-                Authorization: AUTH
-                })
+                "Content-Type": 'application/json',
+                'Accept': 'application/json',
+                'Cookie' : 'token=84554f7624a9f2b'
+            })
             .send({
-                "id": 148307,
-                "name": "Developer",
-                "email": "Developer5@gmail.com",
-                "location": "USA"
+                "firstname": "Jim",
+                "lastname": "Brown",
+                "totalprice": 111,
+                "depositpaid": true,
+                "bookingdates": {
+                    "checkin": "2018-01-01",
+                    "checkout": "2019-01-01"
+                },
+                "additionalneeds": "Breakfast"
             });
 
         expect(response.statusCode).to.eql(200);
-        expect(response.body.Id).to.eql(148307)
-        expect(response.body.Name).to.eql("Developer");
-        expect(response.body.Email).to.eql("Developer5@gmail.com");
+
+
     })
 })

@@ -1,26 +1,21 @@
-const request = require("supertest")("http://restapi.adequateshop.com");
+const request = require("supertest")("https://restful-booker.herokuapp.com");
 const expect = require("chai").expect;
 
-const AUTH = 'Bearer 8b9bc531-9831-4314-9506-91ef5c83054e'
-
-describe("DELETE /api/users/148307", function () {
+describe("DELETE /booking/57806", function () {
 
     it("Delete User ", async function () {
 
         const response = await request
-        .delete("/api/users/148307")
-        .set({
-            Authorization: AUTH
-            });
+            .delete("/booking/57806")
+            .set({
+                "Content-Type": 'application/json',
+                'Authorisation' : 'Basic YWRtaW46cGFzc3dvcmQxMjM=84554f7624a9f2b',
+                // 'Cookie' : 'token=84554f7624a9f2b',
 
-        
-        expect(response.status).to.eql(200);
-        expect(response.body.$id).to.eql(1);
-        expect(response.body.id).to.eql(148307);
-        expect(response.body.name).to.eql("Developer");
-        expect(response.body.email).to.eql("Developer5@gmail.com");
-        expect(response.body.location).to.eql("USA");
+            })
+
+        expect(response.statusCode).to.eql(201);
+
 
     })
 })
-
